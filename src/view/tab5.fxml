@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.specialController">
+    <children>
+        <Button layoutX="36.0" layoutY="31.0" mnemonicParsing="false" onAction="#b1" text="Button"
+                AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="20.0"/>
+        <Button layoutX="50.0" layoutY="69.0" mnemonicParsing="false" onAction="#b2" text="Button"
+                AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="70.0"/>
+        <Button layoutX="50.0" layoutY="122.0" mnemonicParsing="false" onAction="#b3" text="Button"
+                AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="130.0"/>
+        <Button layoutX="50.0" layoutY="187.0" mnemonicParsing="false" onAction="#b4" text="Button"
+                AnchorPane.leftAnchor="50.0"/>
+        <Button layoutX="50.0" layoutY="303.0" mnemonicParsing="false" onAction="#b6" text="Button"
+                AnchorPane.leftAnchor="50.0"/>
+        <Button layoutX="50.0" layoutY="242.0" mnemonicParsing="false" onAction="#b5" text="Button"
+                AnchorPane.leftAnchor="50.0"/>
+        <Button layoutX="50.0" layoutY="353.0" mnemonicParsing="false" onAction="#b7" text="Button"
+                AnchorPane.leftAnchor="50.0"/>
+        <Text layoutX="150.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0"
+              text="Вывести все районы доставки без повторений" AnchorPane.leftAnchor="150.0"/>
+        <Text layoutX="150.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0"
+              text="Вывести все пиццы, которые весят больше 400 г."/>
+        <Text layoutX="150.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0"
+              text="Для каждой пиццерии вывести число районов доставки."/>
+        <Text layoutX="150.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0"
+              text="...среднее число работников по всем офисам и суммарное количество работников."/>
+        <Text layoutX="150.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0"
+              text="...районы доставки и количество позиций."/>
+        <Text layoutX="150.0" layoutY="321.0" lineSpacing="12.0" strokeType="OUTSIDE" strokeWidth="0.0"
+              text="...районы доставки и количество позиций." textAlignment="JUSTIFY"/>
+        <Text layoutX="150.0" layoutY="371.0" strokeType="OUTSIDE" strokeWidth="0.0"
+              text="...суммарное количество работников, количество позиций, средний размер пиццы"/>
+    </children>
+</AnchorPane>
