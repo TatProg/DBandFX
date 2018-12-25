@@ -52,6 +52,17 @@ public class pizzaTypesController implements Initializable {
         Service service = new Service();
         service.AddPizzaToTable(pizza);
 
+        ViewPizzaTypes vpt = new ViewPizzaTypes();
+        try {
+            setTable = vpt.TablePizzaTypes();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        c1.setCellValueFactory(new PropertyValueFactory<>("restaurant"));
+        c2.setCellValueFactory(new PropertyValueFactory<>("name"));
+        c3.setCellValueFactory(new PropertyValueFactory<>("weight"));
+
+        table.setItems(setTable);
         table.refresh();
     }
 

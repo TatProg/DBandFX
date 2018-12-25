@@ -38,9 +38,6 @@ public class Service {
     private static final String minimalMembersToSQL =
             "SELECT * FROM officesAddress WHERE members>(SELECT Avg(members) AS [Avg-members] FROM officesAddress);";
 
-    private static final String triggerUpdate =
-            "";
-
     public Statement statement;
     public Connection connection;
 

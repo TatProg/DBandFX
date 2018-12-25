@@ -54,8 +54,12 @@ public class CreateTable_pizzaTypes {
                 preparedStatement.execute();
                 pizzaList.add(new Pizza(restaurants, pizzaNameToSQL, pizzaWeightToSQL));
             }
-
         }
+        statement.execute("CREATE TRIGGER checkPizzaWeight AFTER INSERT\n" +
+                "ON pizzaType\n" +
+                "BEGIN\n" +
+                "  DELETE FROM pizzaTypes WHERE weight < 0\n" +
+                "END;");
         return pizzaList;
     }
 }
