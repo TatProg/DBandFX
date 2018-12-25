@@ -1,6 +1,8 @@
 package controller;
 
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
@@ -12,8 +14,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Pizza;
+import service.Service;
+import tableView.ViewPizzaTypes;
 
 public class pizzaTypesController implements Initializable {
 
@@ -30,37 +35,33 @@ public class pizzaTypesController implements Initializable {
     private TableColumn<Pizza, String> c2;
 
     @FXML
-    void saveClick(ActionEvent event) {
-
-    }
+    private TextField textField1;
 
     @FXML
-    void loadClick(ActionEvent event) {
-
-    }
+    private TextField textField2;
 
     @FXML
-    void addClick(ActionEvent event) {
-
-    }
+    private TextField textField3;
 
     @FXML
-    void editClick(ActionEvent event) {
+    void addButton(ActionEvent event) throws SQLException {
+        String s1 = textField1.getText();
+        String s2 = textField2.getText();
+        String s3 = textField3.getText();
+        Pizza pizza = new Pizza(s1, s2, Integer.parseInt(s3));
+        Service service = new Service();
+        service.AddPizzaToTable(pizza);
 
-    }
-
-    @FXML
-    void deleteClick(ActionEvent event) {
-
+        table.refresh();
     }
 
     ObservableList<Pizza> setTable = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        CreateTable_pizzaTypes ctpt = new CreateTable_pizzaTypes();
+        ViewPizzaTypes vpt = new ViewPizzaTypes();
         try {
-            setTable = ctpt.CreatePizzaTable();
+            setTable = vpt.TablePizzaTypes();
         } catch (SQLException e) {
             e.printStackTrace();
         }

@@ -1,8 +1,5 @@
 package service;
 
-import createTable.CreateTable_quantityDistrict;
-import javafx.collections.ObservableList;
-import model.District;
 import model.Pizza;
 
 import java.sql.*;
@@ -44,20 +41,20 @@ public class Service {
     private static final String triggerUpdate =
             "";
 
-    public boolean PossibilityOfDelivery(String restaurantPizza, String selectedDistrict) throws SQLException {
-        boolean flag = false;
-//        CreateTable_quantityDistrict ctqd = new CreateTable_quantityDistrict();
-//        ObservableList<District> districtList = ctqd.CreatePizzaTable();
-//        String districtRestaurant;
-//        String districtDistrict;
-//        for (District districtFromList : districtList) {
-//            districtRestaurant = districtFromList.getRestaurant();
-//            districtDistrict = districtFromList.getDistrict();
-//            if ((restaurantPizza.equals(districtRestaurant))
-//                    && (selectedDistrict.equals(districtDistrict))) {
-//                flag = true;
-//            }
-//        }
-        return flag;
+    public Statement statement;
+    public Connection connection;
+
+    public void AddPizzaToTable(Pizza pizza) throws SQLException {
+        connection = DriverManager.getConnection("jdbc:sqlite:/Users/Aydar/IdeaProjects/DBandFX/src/database/pizzaDataBase");
+        statement = connection.createStatement();
+
+        preparedStatement = connection.prepareStatement(
+                "INSERT INTO pizzaTypes (restaurant, name, weight) VALUES (?, ?, ?)");
+
+        preparedStatement.setString(1, pizza.getRestaurant());
+        preparedStatement.setString(2, pizza.getName());
+        preparedStatement.setInt(3, pizza.getWeight());
+        preparedStatement.execute();
     }
+
 }

@@ -14,6 +14,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Office;
+import tableView.ViewOfficesAddress;
 
 public class officeAddressController implements Initializable {
 
@@ -58,9 +59,9 @@ public class officeAddressController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        CreateTable_officesAddress ctoa = new CreateTable_officesAddress();
+        ViewOfficesAddress voa = new ViewOfficesAddress();
         try {
-            setTable = ctoa.CreateTableOffice();
+            setTable = voa.TableOfficesAddress();
         } catch (SQLException e) {
             e.printStackTrace();
         }

@@ -10,30 +10,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CreateTable_pizzaTypes {
+    public Statement statement;
+    public Connection connection;
     private PreparedStatement preparedStatement;
+
     private static final String pizzaTypesToSQL =
             "INSERT INTO pizzaTypes (restaurant, name, weight) VALUES (?, ?, ?)";
-    public Connection connection;
-    {
-        try {
-            connection = DriverManager.getConnection("jdbc:sqlite:/Users/Aydar/IdeaProjects/DBandFX/src/database/pizzaDataBase");
-            Statement statement = connection.createStatement();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public Statement statement;
-    {
-        try {
-            statement = connection.createStatement();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
 
     //создание таблицы пицца - вес
     public ObservableList<Pizza> CreatePizzaTable() throws SQLException {
+        connection = DriverManager.getConnection("jdbc:sqlite:/Users/Aydar/IdeaProjects/DBandFX/src/database/pizzaDataBase");
+        statement = connection.createStatement();
+
         statement.execute("DROP TABLE IF EXISTS pizzaTypes;");
         statement.execute("CREATE TABLE pizzaTypes (" +
                 "restaurant TEXT NOT NULL," +
@@ -68,8 +56,6 @@ public class CreateTable_pizzaTypes {
             }
 
         }
-        statement.close();
-        connection.close();
         return pizzaList;
     }
 }

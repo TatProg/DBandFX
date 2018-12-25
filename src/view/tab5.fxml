@@ -10,19 +10,19 @@
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="controller.specialController">
     <children>
-        <Button layoutX="36.0" layoutY="31.0" mnemonicParsing="false" onAction="#b1" text="Button"
+        <Button layoutX="36.0" layoutY="31.0" mnemonicParsing="false" onAction="#b1" text="SELECT"
                 AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="20.0"/>
-        <Button layoutX="50.0" layoutY="69.0" mnemonicParsing="false" onAction="#b2" text="Button"
+        <Button layoutX="50.0" layoutY="69.0" mnemonicParsing="false" onAction="#b2" text="SELECT"
                 AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="70.0"/>
-        <Button layoutX="50.0" layoutY="122.0" mnemonicParsing="false" onAction="#b3" text="Button"
+        <Button layoutX="50.0" layoutY="122.0" mnemonicParsing="false" onAction="#b3" text="SELECT"
                 AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="130.0"/>
-        <Button layoutX="50.0" layoutY="187.0" mnemonicParsing="false" onAction="#b4" text="Button"
+        <Button layoutX="50.0" layoutY="187.0" mnemonicParsing="false" onAction="#b4" text="SELECT"
                 AnchorPane.leftAnchor="50.0"/>
-        <Button layoutX="50.0" layoutY="303.0" mnemonicParsing="false" onAction="#b6" text="Button"
+        <Button layoutX="50.0" layoutY="303.0" mnemonicParsing="false" onAction="#b6" text="SELECT"
                 AnchorPane.leftAnchor="50.0"/>
-        <Button layoutX="50.0" layoutY="242.0" mnemonicParsing="false" onAction="#b5" text="Button"
+        <Button layoutX="50.0" layoutY="242.0" mnemonicParsing="false" onAction="#b5" text="SELECT"
                 AnchorPane.leftAnchor="50.0"/>
-        <Button layoutX="50.0" layoutY="353.0" mnemonicParsing="false" onAction="#b7" text="Button"
+        <Button layoutX="50.0" layoutY="353.0" mnemonicParsing="false" onAction="#b7" text="SELECT"
                 AnchorPane.leftAnchor="50.0"/>
         <Text layoutX="150.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0"
               text="Вывести все районы доставки без повторений" AnchorPane.leftAnchor="150.0"/>
@@ -37,6 +37,8 @@
         <Text layoutX="150.0" layoutY="321.0" lineSpacing="12.0" strokeType="OUTSIDE" strokeWidth="0.0"
               text="...суммарное количество работников, количество позиций, средний размер пиццы"
               textAlignment="JUSTIFY"/>
-        <Text layoutX="150.0" layoutY="371.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Вывести..."/>
+        <Label layoutX="150.0" layoutY="358.0" text="Вывести пиццерии в которых минимальное количество "/>
+        <Label layoutX="150.0" layoutY="378.0"
+               text="сотрудников в офисе больше, чем среднее количество по всем офисам."/>
     </children>
 </AnchorPane>

@@ -1,6 +1,5 @@
 package controller;
 
-import createTable.CreateTable_menu;
 import createTable.CreateTable_quantityDistrict;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,7 +12,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.District;
 import model.Pizza;
-import service.Service;
+import tableView.ViewPizzaTypes;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -127,9 +126,9 @@ public class menuController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        CreateTable_menu ctm = new CreateTable_menu();
+        ViewPizzaTypes vpt = new ViewPizzaTypes();
         try {
-            setTable = ctm.CreateMenuTable();
+            setTable = vpt.TablePizzaTypesMenu();
         } catch (SQLException e) {
             e.printStackTrace();
         }

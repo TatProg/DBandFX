@@ -9,32 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CreateTable_quantityDistrict {
+    public Statement statement;
+    public Connection connection;
     private PreparedStatement preparedStatement;
     private static final String quantityDistrictsToSQL =
             "INSERT INTO quantityDistrict (restaurant, quantity, district) VALUES (?, ?, ?)";
-    public Connection connection;
-
-    {
-        try {
-            connection = DriverManager.getConnection("jdbc:sqlite:/Users/Aydar/IdeaProjects/DBandFX/src/database/pizzaDataBase");
-            Statement statement = connection.createStatement();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public Statement statement;
-
-    {
-        try {
-            statement = connection.createStatement();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
 
     //создание таблицы пицца - вес
     public ObservableList<District> CreatePizzaTable() throws SQLException {
+        connection = DriverManager.getConnection("jdbc:sqlite:/Users/Aydar/IdeaProjects/DBandFX/src/database/pizzaDataBase");
+        statement = connection.createStatement();
+
         statement.execute("DROP TABLE IF EXISTS quantityDistrict;");
         statement.execute("CREATE TABLE quantityDistrict (" +
                 "restaurant TEXT NOT NULL," +
@@ -66,9 +51,6 @@ public class CreateTable_quantityDistrict {
                 districtList.add(new District(restaurant, Integer.parseInt(quantity), s));
             }
         }
-
-        statement.close();
-        connection.close();
         return districtList;
     }
 }

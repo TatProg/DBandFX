@@ -14,6 +14,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.District;
+import tableView.ViewQuantityDistrict;
 
 public class quantityController implements Initializable {
 
@@ -58,9 +59,9 @@ public class quantityController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        CreateTable_quantityDistrict ctqd = new CreateTable_quantityDistrict();
+        ViewQuantityDistrict vqd = new ViewQuantityDistrict();
         try {
-            setTable = ctqd.CreatePizzaTable();
+            setTable = vqd.TableQuantityDistrict();
         } catch (SQLException e) {
             e.printStackTrace();
         }

@@ -9,33 +9,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CreateTable_averageTable {
-    private Connection connection;
-
-    {
-        try {
-            connection = DriverManager.getConnection("jdbc:sqlite:/Users/Aydar/IdeaProjects/DBandFX/src/database/pizzaDataBase");
-            Statement statement = connection.createStatement();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private Statement statement;
-
-    {
-        try {
-            statement = connection.createStatement();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
+    public Statement statement;
+    public Connection connection;
     private PreparedStatement preparedStatement;
 
     private final String averageMembersToSQL = "INSERT INTO averageTable (restaurant, averageMembers) VALUES (?, ?)";
     private final String averageWeightToSQL = "UPDATE averageTable SET averageWeight = ? WHERE restaurant = ?";
 
     public ObservableList<Average> CreateAverageTable() throws SQLException {
+        connection = DriverManager.getConnection("jdbc:sqlite:/Users/Aydar/IdeaProjects/DBandFX/src/database/pizzaDataBase");
+        statement = connection.createStatement();
 
         statement.execute("DROP TABLE IF EXISTS averageTable");
         statement.execute("CREATE TABLE averageTable (" +
@@ -79,9 +62,6 @@ public class CreateTable_averageTable {
             averageList.add(new Average(restaurant, memberList.get(index), weight));
             index++;
         }
-
-        statement.close();
-        connection.close();
         return averageList;
     }
 }

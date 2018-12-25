@@ -9,33 +9,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CreateTable_officesAddress {
+    public Statement statement;
+    public Connection connection;
     private PreparedStatement preparedStatement;
+
     private static final String officeToSQL =
             "INSERT INTO officesAddress (restaurant, place, members) VALUES (?,?,?)";
 
-    public Connection connection;
-
-    {
-        try {
-            connection = DriverManager.getConnection("jdbc:sqlite:/Users/Aydar/IdeaProjects/DBandFX/src/database/pizzaDataBase");
-            Statement statement = connection.createStatement();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public Statement statement;
-
-    {
-        try {
-            statement = connection.createStatement();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
     //создание таблицы офис - количество работников
     public ObservableList<Office> CreateTableOffice() throws SQLException {
+        connection = DriverManager.getConnection("jdbc:sqlite:/Users/Aydar/IdeaProjects/DBandFX/src/database/pizzaDataBase");
+        statement = connection.createStatement();
+
         statement.execute("DROP TABLE IF EXISTS officesAddress;");
         statement.execute("CREATE TABLE officesAddress (" +
                 "restaurant TEXT NOT NULL," +
@@ -67,8 +52,6 @@ public class CreateTable_officesAddress {
                 officeList.add(new Office(restaurants, addressToSQL, memberToSQL));
             }
         }
-        statement.close();
-        connection.close();
         return officeList;
     }
 }

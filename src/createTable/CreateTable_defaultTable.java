@@ -3,29 +3,14 @@ package createTable;
 import java.sql.*;
 
 public class CreateTable_defaultTable {
-
-    public Connection connection;
-
-    {
-        try {
-            connection = DriverManager.getConnection("jdbc:sqlite:/Users/Aydar/IdeaProjects/DBandFX/src/database/pizzaDataBase");
-            Statement statement = connection.createStatement();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
     public Statement statement;
-
-    {
-        try {
-            statement = connection.createStatement();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
+    public Connection connection;
+    private PreparedStatement preparedStatement;
 
     public void CreatePizzaDefaultTable() throws SQLException {
+        connection = DriverManager.getConnection("jdbc:sqlite:/Users/Aydar/IdeaProjects/DBandFX/src/database/pizzaDataBase");
+        statement = connection.createStatement();
+
         statement.execute("DROP TABLE IF EXISTS defaultTable;");
         statement.execute("CREATE TABLE defaultTable\n" +
                 "(\n" +
@@ -60,7 +45,5 @@ public class CreateTable_defaultTable {
                 "                             '{Авиастроительный}',\n" +
                 "                             '{\"Театральная ул., 3\": 31, \"ул. Кави Наджми, 8\": 27}');");
 
-        statement.close();
-        connection.close();
     }
 }

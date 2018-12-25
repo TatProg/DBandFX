@@ -14,7 +14,7 @@
         <TableView fx:id="table" layoutX="6.0" layoutY="14.0" prefHeight="378.0" prefWidth="420.0">
             <columns>
                 <TableColumn fx:id="c1" prefWidth="117.0" text="Пиццерия"/>
-                <TableColumn fx:id="c2" prefWidth="122.0" text="Количество"/>
+                <TableColumn fx:id="c2" prefWidth="122.0" text="Количество пицц"/>
                 <TableColumn fx:id="c3" prefWidth="75.0" text="Район"/>
             </columns>
             <columnResizePolicy>

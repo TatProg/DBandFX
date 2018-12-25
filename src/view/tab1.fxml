@@ -21,5 +21,13 @@
                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
             </columnResizePolicy>
         </TableView>
+        <Button layoutX="497.0" layoutY="200.0" mnemonicParsing="false" onAction="#addButton" text="Add"
+                AnchorPane.topAnchor="200.0"/>
+        <TextField fx:id="textField1" layoutX="443.0" layoutY="14.0" prefHeight="27.0" prefWidth="150.0"
+                   promptText="restaurant name" AnchorPane.topAnchor="50.0"/>
+        <TextField fx:id="textField2" layoutX="443.0" layoutY="98.0" prefHeight="27.0" prefWidth="150.0"
+                   promptText="pizza name" AnchorPane.topAnchor="100.0"/>
+        <TextField fx:id="textField3" layoutX="443.0" layoutY="146.0" prefHeight="27.0" prefWidth="150.0"
+                   promptText="weight" AnchorPane.topAnchor="150.0"/>
     </children>
 </AnchorPane>

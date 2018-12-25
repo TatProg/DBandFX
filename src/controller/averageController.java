@@ -14,6 +14,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Average;
+import tableView.ViewAverage;
 
 public class averageController implements Initializable {
 
@@ -58,9 +59,9 @@ public class averageController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        CreateTable_averageTable ctat = new CreateTable_averageTable();
+        ViewAverage va = new ViewAverage();
         try {
-            setTable = ctat.CreateAverageTable();
+            setTable = va.TableAverage();
         } catch (SQLException e) {
             e.printStackTrace();
         }
