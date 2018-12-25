@@ -23,13 +23,11 @@ public class Main extends Application {
         CreateTable_officesAddress ctoa = new CreateTable_officesAddress();
         CreateTable_defaultTable ctpd = new CreateTable_defaultTable();
         CreateTable_quantityDistrict ctqd = new CreateTable_quantityDistrict();
-        CreateTable_averageTable ctat = new CreateTable_averageTable();
 
         ctpd.CreatePizzaDefaultTable();
         ctpt.CreatePizzaTable();
         ctoa.CreateTableOffice();
         ctqd.CreatePizzaTable();
-        ctat.CreateAverageTable();
 
         launch(args);
     }

@@ -17,7 +17,7 @@ public class Service {
 
     //3 task - Для каждой пиццерии вывести число районов доставки.
     private static final String restaurantQuantityToSQL =
-            "SELECT restaurant, quantity FROM quantityDistrict GROUP BY restaurant;";
+            "SELECT restaurant, COUNT(district) FROM quantityDistrict GROUP BY restaurant;";
 
     //4 task - Для каждой пиццерии вывести среднее число работников по всем офисам и суммарное количество работников.
     private static final String membersInRestaurantsToSQL =

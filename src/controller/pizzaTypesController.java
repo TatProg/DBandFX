@@ -23,9 +23,6 @@ import tableView.ViewPizzaTypes;
 public class pizzaTypesController implements Initializable {
 
     @FXML
-    private TableColumn<Pizza, String> c3;
-
-    @FXML
     private TableView<Pizza> table;
 
     @FXML
@@ -60,7 +57,6 @@ public class pizzaTypesController implements Initializable {
         }
         c1.setCellValueFactory(new PropertyValueFactory<>("restaurant"));
         c2.setCellValueFactory(new PropertyValueFactory<>("name"));
-        c3.setCellValueFactory(new PropertyValueFactory<>("weight"));
         table.setItems(setTable);
         table.refresh();
 
@@ -80,7 +76,6 @@ public class pizzaTypesController implements Initializable {
         }
         c1.setCellValueFactory(new PropertyValueFactory<>("restaurant"));
         c2.setCellValueFactory(new PropertyValueFactory<>("name"));
-        c3.setCellValueFactory(new PropertyValueFactory<>("weight"));
         table.setItems(setTable);
     }
 }

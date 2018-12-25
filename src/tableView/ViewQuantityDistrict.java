@@ -15,7 +15,7 @@ public class ViewQuantityDistrict {
         statement = connection.createStatement();
 
         ObservableList<District> districtList = FXCollections.observableArrayList();
-        ResultSet rs = statement.executeQuery("SELECT * FROM quantityDistrict");
+        ResultSet rs = statement.executeQuery("SELECT * FROM quantityDistrict GROUP BY restaurant");
         while (rs.next()) {
             String s1 = rs.getString("restaurant");
             int s2 = rs.getInt("quantity");

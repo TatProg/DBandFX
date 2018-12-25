@@ -32,7 +32,7 @@ public class specialController {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("SELECT");
         alert.setHeaderText("Для каждой пиццерии вывести число районов доставки.");
-        alert.setContentText("SELECT restaurant, quantity FROM quantityDistrict GROUP BY restaurant;");
+        alert.setContentText("SELECT restaurant, COUNT(district) FROM quantityDistrict GROUP BY restaurant;");
         alert.showAndWait();
     }
 

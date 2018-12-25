@@ -19,9 +19,6 @@ import tableView.ViewQuantityDistrict;
 public class quantityController implements Initializable {
 
     @FXML
-    private TableColumn<District, String> c3;
-
-    @FXML
     private TableView<District> table;
 
     @FXML
@@ -67,7 +64,6 @@ public class quantityController implements Initializable {
         }
         c1.setCellValueFactory(new PropertyValueFactory<>("restaurant"));
         c2.setCellValueFactory(new PropertyValueFactory<>("quantity"));
-        c3.setCellValueFactory(new PropertyValueFactory<>("district"));
         table.setItems(setTable);
     }
 }
