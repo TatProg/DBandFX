@@ -135,5 +135,19 @@ public class menuController implements Initializable {
         c1.setCellValueFactory(new PropertyValueFactory<>("name"));
         c2.setCellValueFactory(new PropertyValueFactory<>("weight"));
         table.setItems(setTable);
+        table.refresh();
     }
+
+//    @FXML
+//    public void initialize() {
+//        ViewPizzaTypes vpt = new ViewPizzaTypes();
+//        try {
+//            setTable = vpt.TablePizzaTypesMenu();
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        c1.setCellValueFactory(new PropertyValueFactory<>("name"));
+//        c2.setCellValueFactory(new PropertyValueFactory<>("weight"));
+//        table.setItems(setTable);
+//    }
 }

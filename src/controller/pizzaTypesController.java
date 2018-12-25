@@ -61,9 +61,11 @@ public class pizzaTypesController implements Initializable {
         c1.setCellValueFactory(new PropertyValueFactory<>("restaurant"));
         c2.setCellValueFactory(new PropertyValueFactory<>("name"));
         c3.setCellValueFactory(new PropertyValueFactory<>("weight"));
-
         table.setItems(setTable);
         table.refresh();
+
+//        menuController mc = new menuController();
+//        mc.initialize();
     }
 
     ObservableList<Pizza> setTable = FXCollections.observableArrayList();
