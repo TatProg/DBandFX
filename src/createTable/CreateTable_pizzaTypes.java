@@ -14,7 +14,6 @@ public class CreateTable_pizzaTypes {
     private static final String pizzaTypesToSQL =
             "INSERT INTO pizzaTypes (restaurant, name, weight) VALUES (?, ?, ?)";
     public Connection connection;
-
     {
         try {
             connection = DriverManager.getConnection("jdbc:sqlite:/Users/Aydar/IdeaProjects/DBandFX/src/database/pizzaDataBase");
@@ -25,7 +24,6 @@ public class CreateTable_pizzaTypes {
     }
 
     public Statement statement;
-
     {
         try {
             statement = connection.createStatement();
@@ -43,7 +41,6 @@ public class CreateTable_pizzaTypes {
                 "weight INT NOT NULL" +
                 ");");
         ObservableList<Pizza> pizzaList = FXCollections.observableArrayList();
-
         ResultSet rs = statement.executeQuery("SELECT * FROM defaultTable;");
 
         while (rs.next()) {

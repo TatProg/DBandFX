@@ -26,7 +26,17 @@ public class sampleController {
     private Tab tab2;
 
     @FXML
+    private Tab tab0;
+
+    @FXML
     void initialize() {
+        FXMLLoader loadTab0 = new FXMLLoader();
+        loadTab0.setLocation(getClass().getResource("/view/tab0.fxml"));
+        try {
+            tab0.setContent(loadTab0.load());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         FXMLLoader loadTab1 = new FXMLLoader();
         loadTab1.setLocation(getClass().getResource("/view/tab1.fxml"));
         try {

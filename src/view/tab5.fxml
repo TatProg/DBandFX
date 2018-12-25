@@ -35,8 +35,8 @@
         <Text layoutX="150.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0"
               text="...районы доставки и количество позиций."/>
         <Text layoutX="150.0" layoutY="321.0" lineSpacing="12.0" strokeType="OUTSIDE" strokeWidth="0.0"
-              text="...районы доставки и количество позиций." textAlignment="JUSTIFY"/>
-        <Text layoutX="150.0" layoutY="371.0" strokeType="OUTSIDE" strokeWidth="0.0"
-              text="...суммарное количество работников, количество позиций, средний размер пиццы"/>
+              text="...суммарное количество работников, количество позиций, средний размер пиццы"
+              textAlignment="JUSTIFY"/>
+        <Text layoutX="150.0" layoutY="371.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Вывести..."/>
     </children>
 </AnchorPane>

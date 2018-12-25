@@ -21,15 +21,5 @@
                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
             </columnResizePolicy>
         </TableView>
-        <Button layoutX="475.0" layoutY="279.0" mnemonicParsing="false" onAction="#saveClick" prefHeight="31.0"
-                prefWidth="95.0" text="Сохранить"/>
-        <Button layoutX="475.0" layoutY="327.0" mnemonicParsing="false" onAction="#loadClick" prefHeight="31.0"
-                prefWidth="95.0" text="Загрузить"/>
-        <Button layoutX="475.0" layoutY="53.0" mnemonicParsing="false" onAction="#addClick" prefHeight="31.0"
-                prefWidth="95.0" text="Добавить"/>
-        <Button layoutX="475.0" layoutY="109.0" mnemonicParsing="false" onAction="#editClick" prefHeight="31.0"
-                prefWidth="95.0" text="Изменить"/>
-        <Button layoutX="475.0" layoutY="163.0" mnemonicParsing="false" onAction="#deleteClick" prefHeight="31.0"
-                prefWidth="95.0" text="Удалить"/>
     </children>
 </AnchorPane>

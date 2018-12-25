@@ -1,11 +1,14 @@
 package service;
 
+import createTable.CreateTable_quantityDistrict;
+import javafx.collections.ObservableList;
+import model.District;
+import model.Pizza;
+
 import java.sql.*;
 
 public class Service {
     private PreparedStatement preparedStatement;
-
-    //6. Для каждой пиццерии вывести суммарное количество работников, количество позиций, средний размер пиццы.
 
     //1 task - Вывести все районы доставки без повторений.
     private static final String restaurantDistrictsToSQL =
@@ -41,26 +44,20 @@ public class Service {
     private static final String triggerUpdate =
             "";
 
-    public Connection connection;
-
-    {
-        try {
-            connection = DriverManager.getConnection("jdbc:sqlite:/Users/Aydar/IdeaProjects/databasesemestr/src/main/resources/pizzaDataBase");
-            Statement statement = connection.createStatement();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+    public boolean PossibilityOfDelivery(String restaurantPizza, String selectedDistrict) throws SQLException {
+        boolean flag = false;
+//        CreateTable_quantityDistrict ctqd = new CreateTable_quantityDistrict();
+//        ObservableList<District> districtList = ctqd.CreatePizzaTable();
+//        String districtRestaurant;
+//        String districtDistrict;
+//        for (District districtFromList : districtList) {
+//            districtRestaurant = districtFromList.getRestaurant();
+//            districtDistrict = districtFromList.getDistrict();
+//            if ((restaurantPizza.equals(districtRestaurant))
+//                    && (selectedDistrict.equals(districtDistrict))) {
+//                flag = true;
+//            }
+//        }
+        return flag;
     }
-
-    public Statement statement;
-
-    {
-        try {
-            statement = connection.createStatement();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-
 }
