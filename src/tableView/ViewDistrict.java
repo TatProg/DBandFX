@@ -15,11 +15,11 @@ public class ViewDistrict {
         statement = connection.createStatement();
 
         ObservableList<District> districtList = FXCollections.observableArrayList();
-        ResultSet rs = statement.executeQuery("SELECT * FROM districtTable");
+        ResultSet rs = statement.executeQuery("SELECT * FROM districtTable GROUP BY restaurant;");
         while (rs.next()) {
             String s1 = rs.getString("restaurant");
-            String s3 = rs.getString("district");
-            districtList.add(new District(s1, s3));
+            String s2 = rs.getString("district");
+            districtList.add(new District(s1, s2));
         }
         return districtList;
     }

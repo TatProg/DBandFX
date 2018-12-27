@@ -131,6 +131,20 @@ public class pizzaTypesController implements Initializable {
         reader.close();
     }
 
+    @FXML
+    void Reload(ActionEvent event) {
+        ViewPizzaTypes vpt = new ViewPizzaTypes();
+        try {
+            setTable = vpt.TablePizzaTypes();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        c1.setCellValueFactory(new PropertyValueFactory<>("restaurant"));
+        c2.setCellValueFactory(new PropertyValueFactory<>("name"));
+        table.setItems(setTable);
+        table.refresh();
+    }
+
     ObservableList<Pizza> setTable = FXCollections.observableArrayList();
 
     @Override

@@ -39,5 +39,7 @@
                 AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="670.0"/>
         <TextArea layoutX="500.0" layoutY="180.0" prefHeight="200.0" prefWidth="200.0"
                   text="For Adding to Table,&#10;just write smth in fields,&#10;then press Add.&#10;&#10;For Change position,&#10;write about it in fields,&#10;then press Change&#10;&#10;For Deleting position,&#10;choose it than press Delete"/>
+        <Button layoutX="468.0" layoutY="388.0" mnemonicParsing="false" onAction="#Reload" prefHeight="0.0"
+                prefWidth="132.0" text="Обновить данные"/>
     </children>
 </AnchorPane>

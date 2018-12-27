@@ -60,22 +60,9 @@ public class districtController implements Initializable {
     @FXML
     void Delete(ActionEvent event) throws SQLException {
         District oldDistrict = table.getSelectionModel().getSelectedItem();
-        String s1 = textField1.getText();
-        String s2 = textField2.getText();
-
-        District newDistrict = new District(s1, s2);
 
         ServiceDistrict service = new ServiceDistrict();
         service.DeleteDistrictFromTable(oldDistrict);
-        service.AddDistrictToTable(newDistrict);
-
-        ViewDistrict vd = new ViewDistrict();
-
-        setTable = vd.TableDistrict();
-        c1.setCellValueFactory(new PropertyValueFactory<>("restaurant"));
-        c2.setCellValueFactory(new PropertyValueFactory<>("district"));
-        table.setItems(setTable);
-        table.refresh();
     }
 
     @FXML
@@ -118,6 +105,21 @@ public class districtController implements Initializable {
     @FXML
     void Save(ActionEvent event) throws IOException {
         District.WriteData(setTable, "districtIN.txt");
+    }
+
+    @FXML
+    void Reload(ActionEvent event) {
+        ViewDistrict vd = new ViewDistrict();
+
+        try {
+            setTable = vd.TableDistrict();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        c1.setCellValueFactory(new PropertyValueFactory<>("restaurant"));
+        c2.setCellValueFactory(new PropertyValueFactory<>("district"));
+        table.setItems(setTable);
+        table.refresh();
     }
 
     ObservableList<District> setTable = FXCollections.observableArrayList();

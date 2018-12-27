@@ -15,7 +15,7 @@ public class ViewOfficesAddress {
         statement = connection.createStatement();
 
         ObservableList<Office> officeList = FXCollections.observableArrayList();
-        ResultSet rs = statement.executeQuery("SELECT * FROM officesAddress");
+        ResultSet rs = statement.executeQuery("SELECT * FROM officesAddress GROUP BY restaurant;");
         while (rs.next()) {
             String s1 = rs.getString("restaurant");
             String s2 = rs.getString("place");

@@ -15,8 +15,6 @@ public class ServiceDistrict {
 
         preparedStatement = connection.prepareStatement(
                 "INSERT INTO districtTable (restaurant, district) VALUES (?, ?)");
-
-
         preparedStatement.setString(1, district.getRestaurant());
         preparedStatement.setString(2, district.getDistrict());
         preparedStatement.execute();

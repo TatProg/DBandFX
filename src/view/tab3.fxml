@@ -33,5 +33,6 @@
         <Button layoutX="678.0" layoutY="100.0" mnemonicParsing="false" onAction="#Delete" text="Delete"/>
         <Button layoutX="674.0" layoutY="60.0" mnemonicParsing="false" onAction="#Change" text="Change"/>
         <Button layoutX="678.0" layoutY="20.0" mnemonicParsing="false" onAction="#addButton" text="Add"/>
+        <Button layoutX="518.0" layoutY="141.0" mnemonicParsing="false" onAction="#Reload" text="Обновить данные"/>
     </children>
 </AnchorPane>

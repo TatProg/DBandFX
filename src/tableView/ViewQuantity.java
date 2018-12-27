@@ -16,11 +16,11 @@ public class ViewQuantity {
         statement = connection.createStatement();
 
         ObservableList<Quantity> districtList = FXCollections.observableArrayList();
-        ResultSet rs = statement.executeQuery("SELECT * FROM quantityTable GROUP BY restaurant");
+        ResultSet rs = statement.executeQuery("SELECT * FROM quantityTable GROUP BY restaurant;");
         while (rs.next()) {
             String s1 = rs.getString("restaurant");
-            int s3 = rs.getInt("quantity");
-            districtList.add(new Quantity(s1, s3));
+            int s2 = rs.getInt("quantity");
+            districtList.add(new Quantity(s1, s2));
         }
         return districtList;
     }

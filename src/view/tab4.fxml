@@ -26,11 +26,12 @@
         <Button layoutX="680.0" layoutY="398.0" mnemonicParsing="false" onAction="#Upload" text="Upload"/>
         <Button layoutX="626.0" layoutY="398.0" mnemonicParsing="false" onAction="#Save" text="Save"/>
         <Button layoutX="678.0" layoutY="115.0" mnemonicParsing="false" onAction="#Delete" text="Delete"/>
-        <Button layoutX="569.0" layoutY="115.0" mnemonicParsing="false" onAction="#Change" text="Change"/>
+        <Button layoutX="678.0" layoutY="75.0" mnemonicParsing="false" onAction="#Change" text="Change"/>
         <TextField fx:id="textField2" layoutX="513.0" layoutY="69.0" prefHeight="27.0" prefWidth="150.0"
                    promptText="district"/>
         <TextField fx:id="textField1" layoutX="513.0" layoutY="25.0" prefHeight="27.0" prefWidth="150.0"
                    promptText="restaurant name"/>
-        <Button layoutX="501.0" layoutY="115.0" mnemonicParsing="false" onAction="#addButton" text="Add"/>
+        <Button layoutX="686.0" layoutY="25.0" mnemonicParsing="false" onAction="#addButton" text="Add"/>
+        <Button layoutX="494.0" layoutY="115.0" mnemonicParsing="false" onAction="#Reload" text="Обновить данные"/>
     </children>
 </AnchorPane>

@@ -71,16 +71,32 @@ public class officeAddressController implements Initializable {
     }
 
     @FXML
-    void Delete(ActionEvent event) {
+    void Delete(ActionEvent event) throws SQLException {
+        Office newOffice = table.getSelectionModel().getSelectedItem();
+        ServiceOfficeAddress soa = new ServiceOfficeAddress();
+        soa.DeleteOfficeFromTable(newOffice);
+
+        ViewOfficesAddress voa = new ViewOfficesAddress();
+        setTable = voa.TableOfficesAddress();
+        c1.setCellValueFactory(new PropertyValueFactory<>("restaurant"));
+        c2.setCellValueFactory(new PropertyValueFactory<>("office"));
+        c2.setCellValueFactory(new PropertyValueFactory<>("members"));
+        table.setItems(setTable);
+        table.refresh();
 
     }
 
     @FXML
     void Change(ActionEvent event) throws SQLException {
-        Office office = table.getSelectionModel().getSelectedItem();
+        String s1 = textField1.getText();
+        String s2 = textField2.getText();
+        String s3 = textField3.getText();
+        Office oldOffice = new Office(s1, s2, Integer.parseInt(s3));
+        Office newOffice = table.getSelectionModel().getSelectedItem();
 
         ServiceOfficeAddress soa = new ServiceOfficeAddress();
-        soa.DeleteOfficeFromTable(office);
+        soa.DeleteOfficeFromTable(oldOffice);
+        soa.AddOfficeToTable(newOffice);
 
         ViewOfficesAddress voa = new ViewOfficesAddress();
 
@@ -105,6 +121,21 @@ public class officeAddressController implements Initializable {
 
         ViewOfficesAddress voa = new ViewOfficesAddress();
 
+        try {
+            setTable = voa.TableOfficesAddress();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        c1.setCellValueFactory(new PropertyValueFactory<>("restaurant"));
+        c2.setCellValueFactory(new PropertyValueFactory<>("place"));
+        c2.setCellValueFactory(new PropertyValueFactory<>("members"));
+        table.setItems(setTable);
+        table.refresh();
+    }
+
+    @FXML
+    void Reload(ActionEvent event) {
+        ViewOfficesAddress voa = new ViewOfficesAddress();
         try {
             setTable = voa.TableOfficesAddress();
         } catch (SQLException e) {

@@ -15,7 +15,7 @@ public class ViewPizzaTypes {
         statement = connection.createStatement();
 
         ObservableList<Pizza> pizzaList = FXCollections.observableArrayList();
-        ResultSet rs = statement.executeQuery("SELECT * FROM pizzaTypes");
+        ResultSet rs = statement.executeQuery("SELECT * FROM pizzaTypes GROUP BY restaurant;");
         while (rs.next()) {
             String s1 = rs.getString("restaurant");
             String s2 = rs.getString("name");

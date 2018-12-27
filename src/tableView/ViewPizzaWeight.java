@@ -18,8 +18,8 @@ public class ViewPizzaWeight {
         ResultSet rs = statement.executeQuery("SELECT * FROM pizzaWeight");
         while (rs.next()) {
             String s1 = rs.getString("pizzaName");
-            int s3 = rs.getInt("weight");
-            weightList.add(new Weight(s1, s3));
+            int s2 = rs.getInt("weight");
+            weightList.add(new Weight(s1, s2));
         }
         return weightList;
 
