@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -8,10 +9,10 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+<AnchorPane prefHeight="450.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="controller.pizzaTypesController">
     <children>
-        <TableView fx:id="table" layoutX="6.0" layoutY="14.0" prefHeight="378.0" prefWidth="420.0">
+        <TableView fx:id="table" layoutX="6.0" layoutY="14.0" prefHeight="400.0" prefWidth="450.0">
             <columns>
                 <TableColumn fx:id="c1" prefWidth="117.0" text="Пиццерия"/>
                 <TableColumn fx:id="c2" prefWidth="122.0" text="Пицца"/>
@@ -20,21 +21,23 @@
                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
             </columnResizePolicy>
         </TableView>
-        <Button layoutX="443.0" layoutY="200.0" mnemonicParsing="false" onAction="#addButton" text="Add"
-                AnchorPane.topAnchor="195.0"/>
+        <Button layoutX="693.0" layoutY="45.0" mnemonicParsing="false" onAction="#addButton" text="Add"
+                AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="45.0"/>
         <TextField fx:id="textField1" layoutX="443.0" layoutY="14.0" prefHeight="27.0" prefWidth="150.0"
-                   promptText="restaurant name" AnchorPane.leftAnchor="443.0" AnchorPane.topAnchor="45.0"/>
+                   promptText="restaurant name" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="45.0"/>
         <TextField fx:id="textField2" layoutX="443.0" layoutY="98.0" prefHeight="27.0" prefWidth="150.0"
-                   promptText="pizza name" AnchorPane.leftAnchor="443.0" AnchorPane.topAnchor="95.0"/>
+                   promptText="pizza name" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="95.0"/>
         <TextField fx:id="textField3" layoutX="443.0" layoutY="150.0" prefHeight="27.0" prefWidth="150.0"
-                   promptText="weight" AnchorPane.leftAnchor="443.0" AnchorPane.topAnchor="145.0"/>
-        <Button layoutX="527.0" layoutY="200.0" mnemonicParsing="false" onAction="#Change" text="Change"
-                AnchorPane.topAnchor="195.0"/>
-        <Button layoutX="489.0" layoutY="244.0" mnemonicParsing="false" onAction="#Delete" text="Delete"
-                AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="500.0"/>
-        <Button layoutX="489.0" layoutY="329.0" mnemonicParsing="false" onAction="#Save" text="Save"
-                AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="500.0"/>
-        <Button layoutX="486.0" layoutY="289.0" mnemonicParsing="false" onAction="#Upload" text="Upload"
-                AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="500.0"/>
+                   promptText="weight" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="145.0"/>
+        <Button layoutX="670.0" layoutY="95.0" mnemonicParsing="false" onAction="#Change" text="Change"
+                AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="95.0"/>
+        <Button layoutX="668.0" layoutY="145.0" mnemonicParsing="false" onAction="#Delete" text="Delete"
+                AnchorPane.rightAnchor="20.0"/>
+        <Button layoutX="616.0" layoutY="388.0" mnemonicParsing="false" onAction="#Save" text="Save"
+                AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="616.0"/>
+        <Button layoutX="670.0" layoutY="388.0" mnemonicParsing="false" onAction="#Upload" text="Upload"
+                AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="670.0"/>
+        <TextArea layoutX="500.0" layoutY="180.0" prefHeight="200.0" prefWidth="200.0"
+                  text="For Adding to Table,&#10;just write smth in fields,&#10;then press Add.&#10;&#10;For Change position,&#10;write about it in fields,&#10;then press Change&#10;&#10;For Deleting position,&#10;choose it than press Delete"/>
     </children>
 </AnchorPane>

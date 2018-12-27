@@ -17,6 +17,7 @@ import model.Pizza;
 import model.Quantity;
 import model.Weight;
 import service.Service;
+import service.ServicePizzaTypes;
 import tableView.ViewDistrict;
 import tableView.ViewPizzaTypes;
 import tableView.ViewPizzaWeight;
@@ -40,7 +41,7 @@ public class menuController implements Initializable {
 
     @FXML
     void butPrvol(ActionEvent event) throws SQLException {
-        Service service = new Service();
+        ServicePizzaTypes service = new ServicePizzaTypes();
         Weight selectedPizza = table.getSelectionModel().getSelectedItem();
         boolean flag = service.OrderPizzaToDistrict(selectedPizza, "Приволжский");
         System.out.println(flag);
@@ -61,7 +62,7 @@ public class menuController implements Initializable {
 
     @FXML
     void butSov(ActionEvent event) throws SQLException {
-        Service service = new Service();
+        ServicePizzaTypes service = new ServicePizzaTypes();
         Weight selectedPizza = table.getSelectionModel().getSelectedItem();
         boolean flag = service.OrderPizzaToDistrict(selectedPizza, "Советский");
         if (flag) {
@@ -81,7 +82,7 @@ public class menuController implements Initializable {
 
     @FXML
     void butAvia(ActionEvent event) throws SQLException {
-        Service service = new Service();
+        ServicePizzaTypes service = new ServicePizzaTypes();
         Weight selectedPizza = table.getSelectionModel().getSelectedItem();
         boolean flag = service.OrderPizzaToDistrict(selectedPizza, "Авиастроительный");
         if (flag) {

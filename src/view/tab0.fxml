@@ -9,10 +9,10 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+<AnchorPane prefHeight="450.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="controller.menuController">
     <children>
-        <TableView fx:id="table" layoutX="6.0" layoutY="14.0" prefHeight="378.0" prefWidth="301.0">
+        <TableView fx:id="table" layoutX="6.0" layoutY="14.0" prefHeight="400.0" prefWidth="300.0">
             <columns>
                 <TableColumn fx:id="c1" prefWidth="117.0" text="Пицца"/>
                 <TableColumn fx:id="c2" prefWidth="78.0" text="Вес"/>

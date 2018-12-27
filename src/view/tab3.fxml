@@ -8,10 +8,10 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+<AnchorPane prefHeight="450.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="controller.officeAddressController">
     <children>
-        <TableView fx:id="table" layoutX="6.0" layoutY="14.0" prefHeight="378.0" prefWidth="420.0">
+        <TableView fx:id="table" layoutX="6.0" layoutY="14.0" prefHeight="400.0" prefWidth="450.0">
             <columns>
                 <TableColumn fx:id="c1" prefWidth="117.0" text="Пиццерия"/>
                 <TableColumn fx:id="c2" prefWidth="189.0" text="Адрес"/>
@@ -21,5 +21,17 @@
                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
             </columnResizePolicy>
         </TableView>
+        <TextField fx:id="textField1" layoutX="553.0" layoutY="34.0" promptText="restaurant name"
+                   AnchorPane.leftAnchor="500.0" AnchorPane.topAnchor="20.0"/>
+        <TextField fx:id="textFiel2" layoutX="500.0" layoutY="62.0" promptText="address" AnchorPane.topAnchor="60.0"/>
+        <TextField fx:id="textField3" layoutX="500.0" layoutY="105.0" promptText="members"
+                   AnchorPane.topAnchor="100.0"/>
+        <TextArea layoutX="510.0" layoutY="190.0" prefHeight="200.0" prefWidth="200.0"
+                  text="For Adding to Table,&#10;just write smth in fields,&#10;then press Add.&#10;&#10;For Change position,&#10;write about it in fields,&#10;then press Change&#10;&#10;For Deleting position,&#10;choose it than press Delete"/>
+        <Button layoutX="680.0" layoutY="398.0" mnemonicParsing="false" onAction="#Upload" text="Upload"/>
+        <Button layoutX="626.0" layoutY="398.0" mnemonicParsing="false" onAction="#Save" text="Save"/>
+        <Button layoutX="678.0" layoutY="100.0" mnemonicParsing="false" onAction="#Delete" text="Delete"/>
+        <Button layoutX="674.0" layoutY="60.0" mnemonicParsing="false" onAction="#Change" text="Change"/>
+        <Button layoutX="678.0" layoutY="20.0" mnemonicParsing="false" onAction="#addButton" text="Add"/>
     </children>
 </AnchorPane>

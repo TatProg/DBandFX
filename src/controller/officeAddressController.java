@@ -30,28 +30,29 @@ public class officeAddressController implements Initializable {
     @FXML
     private TableColumn<Office, String> c2;
 
+
     @FXML
-    void saveClick(ActionEvent event) {
+    void Upload(ActionEvent event) {
+        //officeAddressIN.txt
+    }
+
+    @FXML
+    void Save(ActionEvent event) {
+        //officeAddressOUT.txt
+    }
+
+    @FXML
+    void Delete(ActionEvent event) {
 
     }
 
     @FXML
-    void loadClick(ActionEvent event) {
+    void Change(ActionEvent event) {
 
     }
 
     @FXML
-    void addClick(ActionEvent event) {
-
-    }
-
-    @FXML
-    void editClick(ActionEvent event) {
-
-    }
-
-    @FXML
-    void deleteClick(ActionEvent event) {
+    void addButton(ActionEvent event) {
 
     }
 

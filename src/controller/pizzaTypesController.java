@@ -17,6 +17,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import model.Pizza;
 import model.Weight;
 import service.Service;
+import service.ServicePizzaTypes;
 import tableView.ViewPizzaTypes;
 
 public class pizzaTypesController implements Initializable {
@@ -47,8 +48,9 @@ public class pizzaTypesController implements Initializable {
         Pizza pizza = new Pizza(s1, s2);
         Weight weight = new Weight(s2, Integer.parseInt(s3));
 
-        Service service = new Service();
+        ServicePizzaTypes service = new ServicePizzaTypes();
         service.AddPizzaToTable(pizza, weight);
+        service.AddToQuantity(pizza);
 
         ViewPizzaTypes vpt = new ViewPizzaTypes();
         try {
@@ -71,7 +73,8 @@ public class pizzaTypesController implements Initializable {
         Pizza newPizza = new Pizza(s1, s2);
         Weight newWeight = new Weight(s2, Integer.parseInt(s3));
 
-        Service service = new Service();
+        ServicePizzaTypes service = new ServicePizzaTypes();
+
         service.DeletePizzaFromTable(oldPizza);
         service.AddPizzaToTable(newPizza, newWeight);
 
@@ -90,7 +93,7 @@ public class pizzaTypesController implements Initializable {
     @FXML
     void Delete(ActionEvent event) throws SQLException {
         Pizza oldPizza = table.getSelectionModel().getSelectedItem();
-        Service service = new Service();
+        ServicePizzaTypes service = new ServicePizzaTypes();
         service.DeletePizzaFromTable(oldPizza);
 
         ViewPizzaTypes vpt = new ViewPizzaTypes();
@@ -108,7 +111,6 @@ public class pizzaTypesController implements Initializable {
     @FXML
     void Save(ActionEvent event) throws IOException {
         Pizza.WriteData(setTable, "PizzaTypesIN.txt");
-//PizzaTypesIN.txt
     }
 
     @FXML

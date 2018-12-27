@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.*;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -28,28 +29,39 @@ public class quantityController implements Initializable {
     private TableColumn<Quantity, String> c2;
 
     @FXML
-    void saveClick(ActionEvent event) {
-
+    void Reload(ActionEvent event) {
+        ViewQuantity vq = new ViewQuantity();
+        try {
+            setTable = vq.TableQuantity();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        c1.setCellValueFactory(new PropertyValueFactory<>("restaurant"));
+        c2.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+        table.setItems(setTable);
+        table.refresh();
     }
 
     @FXML
-    void loadClick(ActionEvent event) {
-
+    void Upload(ActionEvent event) throws IOException {
+        BufferedReader reader = new BufferedReader(
+                new InputStreamReader(
+                        new FileInputStream("QuantityOUT.txt")));
+        setTable.clear();
+        reader.lines().forEach(line -> {
+            String[] words = line.split(" , ");
+            setTable.add(new Quantity(
+                    words[0],
+                    Integer.parseInt(words[1])
+            ));
+        });
+        table.refresh();
+        reader.close();
     }
 
     @FXML
-    void addClick(ActionEvent event) {
-
-    }
-
-    @FXML
-    void editClick(ActionEvent event) {
-
-    }
-
-    @FXML
-    void deleteClick(ActionEvent event) {
-
+    void Save(ActionEvent event) throws IOException {
+        Quantity.WriteData(setTable, "QuantityIN.txt");
     }
 
     ObservableList<Quantity> setTable = FXCollections.observableArrayList();

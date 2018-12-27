@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -8,10 +9,10 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+<AnchorPane prefHeight="450.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="controller.districtController">
     <children>
-        <TableView fx:id="table" layoutX="6.0" layoutY="14.0" prefHeight="378.0" prefWidth="420.0">
+        <TableView fx:id="table" layoutX="6.0" layoutY="14.0" prefHeight="400.0" prefWidth="450.0">
             <columns>
                 <TableColumn fx:id="c1" prefWidth="117.0" text="Пиццерия"/>
                 <TableColumn fx:id="c2" prefWidth="122.0" text="Район"/>
@@ -20,5 +21,16 @@
                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
             </columnResizePolicy>
         </TableView>
+        <TextArea layoutX="488.0" layoutY="163.0" prefHeight="200.0" prefWidth="200.0"
+                  text="For Adding to Table,&#10;just write smth in fields,&#10;then press Add.&#10;&#10;For Change position,&#10;write about it in fields,&#10;then press Change&#10;&#10;For Deleting position,&#10;choose it than press Delete"/>
+        <Button layoutX="680.0" layoutY="398.0" mnemonicParsing="false" onAction="#Upload" text="Upload"/>
+        <Button layoutX="626.0" layoutY="398.0" mnemonicParsing="false" onAction="#Save" text="Save"/>
+        <Button layoutX="678.0" layoutY="115.0" mnemonicParsing="false" onAction="#Delete" text="Delete"/>
+        <Button layoutX="569.0" layoutY="115.0" mnemonicParsing="false" onAction="#Change" text="Change"/>
+        <TextField fx:id="textField2" layoutX="513.0" layoutY="69.0" prefHeight="27.0" prefWidth="150.0"
+                   promptText="district"/>
+        <TextField fx:id="textField1" layoutX="513.0" layoutY="25.0" prefHeight="27.0" prefWidth="150.0"
+                   promptText="restaurant name"/>
+        <Button layoutX="501.0" layoutY="115.0" mnemonicParsing="false" onAction="#addButton" text="Add"/>
     </children>
 </AnchorPane>
