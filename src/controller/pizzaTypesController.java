@@ -1,12 +1,10 @@
 package controller;
 
+import java.io.*;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-import createTable.CreateTable_pizzaTypes;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -41,7 +39,6 @@ public class pizzaTypesController implements Initializable {
     @FXML
     private TextField textField3;
 
-    //FixMe add new pizza method
     @FXML
     void addButton(ActionEvent event) throws SQLException {
         String s1 = textField1.getText();
@@ -63,6 +60,72 @@ public class pizzaTypesController implements Initializable {
         c2.setCellValueFactory(new PropertyValueFactory<>("name"));
         table.setItems(setTable);
         table.refresh();
+    }
+
+    @FXML
+    void Change(ActionEvent event) throws SQLException {
+        Pizza oldPizza = table.getSelectionModel().getSelectedItem();
+        String s1 = textField1.getText();
+        String s2 = textField2.getText();
+        String s3 = textField3.getText();
+        Pizza newPizza = new Pizza(s1, s2);
+        Weight newWeight = new Weight(s2, Integer.parseInt(s3));
+
+        Service service = new Service();
+        service.DeletePizzaFromTable(oldPizza);
+        service.AddPizzaToTable(newPizza, newWeight);
+
+        ViewPizzaTypes vpt = new ViewPizzaTypes();
+        try {
+            setTable = vpt.TablePizzaTypes();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        c1.setCellValueFactory(new PropertyValueFactory<>("restaurant"));
+        c2.setCellValueFactory(new PropertyValueFactory<>("name"));
+        table.setItems(setTable);
+        table.refresh();
+    }
+
+    @FXML
+    void Delete(ActionEvent event) throws SQLException {
+        Pizza oldPizza = table.getSelectionModel().getSelectedItem();
+        Service service = new Service();
+        service.DeletePizzaFromTable(oldPizza);
+
+        ViewPizzaTypes vpt = new ViewPizzaTypes();
+        try {
+            setTable = vpt.TablePizzaTypes();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        c1.setCellValueFactory(new PropertyValueFactory<>("restaurant"));
+        c2.setCellValueFactory(new PropertyValueFactory<>("name"));
+        table.setItems(setTable);
+        table.refresh();
+    }
+
+    @FXML
+    void Save(ActionEvent event) throws IOException {
+        Pizza.WriteData(setTable, "PizzaTypesIN.txt");
+//PizzaTypesIN.txt
+    }
+
+    @FXML
+    void Upload(ActionEvent event) throws IOException {
+        BufferedReader reader = new BufferedReader(
+                new InputStreamReader(
+                        new FileInputStream("PizzaTypesOUT.txt")));
+        setTable.clear();
+        reader.lines().forEach(line -> {
+            String[] words = line.split(" , ");
+            setTable.add(new Pizza(
+                    words[0],
+                    words[1]
+            ));
+        });
+        table.refresh();
+        reader.close();
     }
 
     ObservableList<Pizza> setTable = FXCollections.observableArrayList();

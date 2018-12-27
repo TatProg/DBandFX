@@ -20,13 +20,21 @@
                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
             </columnResizePolicy>
         </TableView>
-        <Button layoutX="497.0" layoutY="200.0" mnemonicParsing="false" onAction="#addButton" text="Add"
-                AnchorPane.topAnchor="200.0"/>
+        <Button layoutX="443.0" layoutY="200.0" mnemonicParsing="false" onAction="#addButton" text="Add"
+                AnchorPane.topAnchor="195.0"/>
         <TextField fx:id="textField1" layoutX="443.0" layoutY="14.0" prefHeight="27.0" prefWidth="150.0"
-                   promptText="restaurant name" AnchorPane.leftAnchor="443.0" AnchorPane.topAnchor="50.0"/>
+                   promptText="restaurant name" AnchorPane.leftAnchor="443.0" AnchorPane.topAnchor="45.0"/>
         <TextField fx:id="textField2" layoutX="443.0" layoutY="98.0" prefHeight="27.0" prefWidth="150.0"
-                   promptText="pizza name" AnchorPane.leftAnchor="443.0" AnchorPane.topAnchor="100.0"/>
+                   promptText="pizza name" AnchorPane.leftAnchor="443.0" AnchorPane.topAnchor="95.0"/>
         <TextField fx:id="textField3" layoutX="443.0" layoutY="150.0" prefHeight="27.0" prefWidth="150.0"
-                   promptText="weight" AnchorPane.leftAnchor="443.0" AnchorPane.topAnchor="150.0"/>
+                   promptText="weight" AnchorPane.leftAnchor="443.0" AnchorPane.topAnchor="145.0"/>
+        <Button layoutX="527.0" layoutY="200.0" mnemonicParsing="false" onAction="#Change" text="Change"
+                AnchorPane.topAnchor="195.0"/>
+        <Button layoutX="489.0" layoutY="244.0" mnemonicParsing="false" onAction="#Delete" text="Delete"
+                AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="500.0"/>
+        <Button layoutX="489.0" layoutY="329.0" mnemonicParsing="false" onAction="#Save" text="Save"
+                AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="500.0"/>
+        <Button layoutX="486.0" layoutY="289.0" mnemonicParsing="false" onAction="#Upload" text="Upload"
+                AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="500.0"/>
     </children>
 </AnchorPane>
