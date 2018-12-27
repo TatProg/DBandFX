@@ -1,6 +1,5 @@
 package createTable;
 
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.Weight;
 

@@ -4,9 +4,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
 public class specialController {
 
     @FXML

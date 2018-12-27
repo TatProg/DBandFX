@@ -16,9 +16,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Office;
 import model.Pizza;
+import service.ServiceOfficeAddress;
+import tableView.ViewDistrict;
 import tableView.ViewOfficesAddress;
 
 public class officeAddressController implements Initializable {
@@ -35,6 +38,14 @@ public class officeAddressController implements Initializable {
     @FXML
     private TableColumn<Office, String> c2;
 
+    @FXML
+    private TextField textField1;
+
+    @FXML
+    private TextField textField3;
+
+    @FXML
+    private TextField textField2;
 
     @FXML
     void Upload(ActionEvent event) throws IOException {
@@ -65,13 +76,45 @@ public class officeAddressController implements Initializable {
     }
 
     @FXML
-    void Change(ActionEvent event) {
+    void Change(ActionEvent event) throws SQLException {
+        Office office = table.getSelectionModel().getSelectedItem();
 
+        ServiceOfficeAddress soa = new ServiceOfficeAddress();
+        soa.DeleteOfficeFromTable(office);
+
+        ViewOfficesAddress voa = new ViewOfficesAddress();
+
+        setTable = voa.TableOfficesAddress();
+        c1.setCellValueFactory(new PropertyValueFactory<>("restaurant"));
+        c2.setCellValueFactory(new PropertyValueFactory<>("office"));
+        c2.setCellValueFactory(new PropertyValueFactory<>("members"));
+        table.setItems(setTable);
+        table.refresh();
     }
 
     @FXML
-    void addButton(ActionEvent event) {
+    void addButton(ActionEvent event) throws SQLException {
+        String s1 = textField1.getText();
+        String s2 = textField2.getText();
+        String s3 = textField3.getText();
 
+        Office office = new Office(s1, s2, Integer.parseInt(s3));
+
+        ServiceOfficeAddress service = new ServiceOfficeAddress();
+        service.AddOfficeToTable(office);
+
+        ViewOfficesAddress voa = new ViewOfficesAddress();
+
+        try {
+            setTable = voa.TableOfficesAddress();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        c1.setCellValueFactory(new PropertyValueFactory<>("restaurant"));
+        c2.setCellValueFactory(new PropertyValueFactory<>("place"));
+        c2.setCellValueFactory(new PropertyValueFactory<>("members"));
+        table.setItems(setTable);
+        table.refresh();
     }
 
     ObservableList<Office> setTable = FXCollections.observableArrayList();

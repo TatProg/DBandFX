@@ -56,6 +56,7 @@ public class ServicePizzaTypes {
                 preparedStatement.execute();
             }
         }
+
     }
 
     public boolean OrderPizzaToDistrict(Weight selectedPizza, String districtString) throws SQLException {
@@ -95,6 +96,19 @@ public class ServicePizzaTypes {
             if (quantity.getRestaurant().equals(pizza.getRestaurant())) {
                 preparedStatement = connection.prepareStatement("UPDATE quantityTable " +
                         "SET quantity=quantity+1 WHERE restaurant = ?;");
+                preparedStatement.setString(1, pizza.getRestaurant());
+                preparedStatement.execute();
+            }
+        }
+    }
+
+    public void DeleteFromQuantity(Pizza pizza) throws SQLException {
+        ViewQuantity vq = new ViewQuantity();
+        ObservableList<Quantity> quantityList = vq.TableQuantity();
+        for (Quantity quantity : quantityList) {
+            if (quantity.getRestaurant().equals(pizza.getRestaurant())) {
+                preparedStatement = connection.prepareStatement("UPDATE quantityTable " +
+                        "SET quantity=quantity-1 WHERE restaurant = ?;");
                 preparedStatement.setString(1, pizza.getRestaurant());
                 preparedStatement.execute();
             }

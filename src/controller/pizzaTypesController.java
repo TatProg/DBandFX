@@ -95,6 +95,7 @@ public class pizzaTypesController implements Initializable {
         Pizza oldPizza = table.getSelectionModel().getSelectedItem();
         ServicePizzaTypes service = new ServicePizzaTypes();
         service.DeletePizzaFromTable(oldPizza);
+        service.DeleteFromQuantity(oldPizza);
 
         ViewPizzaTypes vpt = new ViewPizzaTypes();
         try {

@@ -2,7 +2,6 @@ package createTable;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import model.District;
 import model.Pizza;
 import model.Weight;
 

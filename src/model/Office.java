@@ -71,6 +71,6 @@ public class Office {
 
     @Override
     public String toString() {
-        return restaurant + ", " + place + " : " + members;
+        return restaurant + " * " + place + " * " + members;
     }
 }

@@ -10,9 +10,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.District;
-import model.Pizza;
+import service.ServiceDistrict;
 import tableView.ViewDistrict;
-import tableView.ViewQuantity;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -40,6 +39,66 @@ public class districtController implements Initializable {
     private TextField textField1;
 
     @FXML
+    void addButton(ActionEvent event) throws SQLException {
+        String s1 = textField1.getText();
+        String s2 = textField2.getText();
+
+        District district = new District(s1, s2);
+
+        ServiceDistrict service = new ServiceDistrict();
+        service.AddDistrictToTable(district);
+
+        ViewDistrict vd = new ViewDistrict();
+
+        setTable = vd.TableDistrict();
+        c1.setCellValueFactory(new PropertyValueFactory<>("restaurant"));
+        c2.setCellValueFactory(new PropertyValueFactory<>("district"));
+        table.setItems(setTable);
+        table.refresh();
+    }
+
+    @FXML
+    void Delete(ActionEvent event) throws SQLException {
+        District oldDistrict = table.getSelectionModel().getSelectedItem();
+        String s1 = textField1.getText();
+        String s2 = textField2.getText();
+
+        District newDistrict = new District(s1, s2);
+
+        ServiceDistrict service = new ServiceDistrict();
+        service.DeleteDistrictFromTable(oldDistrict);
+        service.AddDistrictToTable(newDistrict);
+
+        ViewDistrict vd = new ViewDistrict();
+
+        setTable = vd.TableDistrict();
+        c1.setCellValueFactory(new PropertyValueFactory<>("restaurant"));
+        c2.setCellValueFactory(new PropertyValueFactory<>("district"));
+        table.setItems(setTable);
+        table.refresh();
+    }
+
+    @FXML
+    void Change(ActionEvent event) throws SQLException {
+        District oldDistrict = table.getSelectionModel().getSelectedItem();
+        String s1 = textField1.getText();
+        String s2 = textField2.getText();
+        District district = new District(s1, s2);
+
+        ServiceDistrict service = new ServiceDistrict();
+        service.DeleteDistrictFromTable(oldDistrict);
+        service.AddDistrictToTable(district);
+
+        ViewDistrict vd = new ViewDistrict();
+
+        setTable = vd.TableDistrict();
+        c1.setCellValueFactory(new PropertyValueFactory<>("restaurant"));
+        c2.setCellValueFactory(new PropertyValueFactory<>("district"));
+        table.setItems(setTable);
+        table.refresh();
+    }
+
+    @FXML
     void Upload(ActionEvent event) throws IOException {
         BufferedReader reader = new BufferedReader(
                 new InputStreamReader(
@@ -59,21 +118,6 @@ public class districtController implements Initializable {
     @FXML
     void Save(ActionEvent event) throws IOException {
         District.WriteData(setTable, "districtIN.txt");
-    }
-
-    @FXML
-    void Delete(ActionEvent event) {
-
-    }
-
-    @FXML
-    void Change(ActionEvent event) {
-
-    }
-
-    @FXML
-    void addButton(ActionEvent event) {
-
     }
 
     ObservableList<District> setTable = FXCollections.observableArrayList();

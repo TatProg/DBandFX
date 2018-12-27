@@ -1,8 +1,5 @@
 package controller;
 
-import createTable.CreateTable_district;
-import createTable.CreateTable_pizzaTypes;
-import createTable.CreateTable_quantity;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -12,16 +9,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import model.District;
-import model.Pizza;
-import model.Quantity;
 import model.Weight;
-import service.Service;
 import service.ServicePizzaTypes;
-import tableView.ViewDistrict;
-import tableView.ViewPizzaTypes;
 import tableView.ViewPizzaWeight;
-
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -36,8 +26,6 @@ public class menuController implements Initializable {
 
     @FXML
     private TableColumn<Weight, String> c2;
-
-    //Service service;
 
     @FXML
     void butPrvol(ActionEvent event) throws SQLException {

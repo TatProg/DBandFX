@@ -2,12 +2,9 @@ package createTable;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import model.District;
 import model.Quantity;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class CreateTable_quantity {
     public Statement statement;
