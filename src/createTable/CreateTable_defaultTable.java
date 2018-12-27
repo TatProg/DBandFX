@@ -46,3 +46,4 @@ public class CreateTable_defaultTable {
                 "                             '{\"Театральная ул., 3\": 31, \"ул. Кави Наджми, 8\": 27}');");
     }
 }
+

@@ -1,22 +1,29 @@
---Вот два триггера, написал строго по инструкции с умных сайтов. Но оно не работает
+--6. Для каждой пиццерии вывести суммарное количество работников, количество позиций, средний размер пиццы.
 
-CREATE TRIGGER checkPizzaWeight
-  AFTER INSERT
-  ON pizzaType
-BEGIN
-  DELETE
-  FROM pizzaTypes
-  WHERE weight < 0;
-END;
+-- SELECT pizzaTypes.restaurant,
+--       --COUNT(pizzaTypes.name),
+--       quantityTable.quantity,
+--       AVG(pizzaTypes.weight),
+--       SUM(officesAddress.members)/3
+-- FROM pizzaTypes, officesAddress, quantityTable
+-- WHERE pizzaTypes.restaurant = officesAddress.restaurant
+--   AND pizzaTypes.restaurant = quantityTable.restaurant
+--   AND quantityTable.restaurant = officesAddress.restaurant
+-- GROUP BY pizzaTypes.restaurant;
 
-CREATE TRIGGER checkRestaurant
-  AFTER INSERT
-  ON pizzaType
-BEGIN
-  DELETE
-  FROM pizzaTypes
-  WHERE restaurant <> 'Папа Джонс'
-     OR restaurant <> 'Додо пицца'
-     OR restaurant <> 'Домино пицца'
-     OR restaurant <> 'А Рома';
-END;
+
+CREATE TABLE pizzaWeightTRASH (
+  pizzaName TEXT NOT NULL,
+  weight    INT  NOT NULL
+);
+INSERT INTO pizzaWeightTRASH (pizzaName, weight)
+VALUES ('wow', 12),
+       ('puf', 23),
+       ('wow', 12),
+       ('wow', 12),
+       ('wow', 12),
+       ('zap', 34);
+SELECT *
+FROM pizzaWeightTRASH
+GROUP BY pizzaName;
+DROP TABLE pizzaWeightTRASH;

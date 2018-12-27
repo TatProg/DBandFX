@@ -2,25 +2,26 @@ package tableView;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import model.Pizza;
+import model.District;
+import model.Quantity;
 
 import java.sql.*;
 
-public class ViewPizzaTypes {
+public class ViewQuantity {
     public Statement statement;
     public Connection connection;
 
-    public ObservableList<Pizza> TablePizzaTypes() throws SQLException {
+    public ObservableList<Quantity> TableQuantity() throws SQLException {
         connection = DriverManager.getConnection("jdbc:sqlite:/Users/Aydar/IdeaProjects/DBandFX/src/database/pizzaDataBase");
         statement = connection.createStatement();
 
-        ObservableList<Pizza> pizzaList = FXCollections.observableArrayList();
-        ResultSet rs = statement.executeQuery("SELECT * FROM pizzaTypes");
+        ObservableList<Quantity> districtList = FXCollections.observableArrayList();
+        ResultSet rs = statement.executeQuery("SELECT * FROM quantityTable GROUP BY restaurant");
         while (rs.next()) {
             String s1 = rs.getString("restaurant");
-            String s2 = rs.getString("name");
-            pizzaList.add(new Pizza(s1, s2));
+            int s3 = rs.getInt("quantity");
+            districtList.add(new Quantity(s1, s3));
         }
-        return pizzaList;
+        return districtList;
     }
 }

@@ -1,8 +1,14 @@
 package service;
 
+import javafx.collections.ObservableList;
+import model.District;
 import model.Pizza;
+import model.Weight;
+import tableView.ViewDistrict;
+import tableView.ViewPizzaTypes;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class Service {
     private PreparedStatement preparedStatement;
@@ -25,14 +31,12 @@ public class Service {
 
     //5 task - Для каждой пиццерии вывести районы доставки и количество позиций.
     private static final String districtsQuantityToSQL =
-            "SELECT restaurant, quantity, district FROM quantityDistrict;";
+            "SELECT districtTable.restaurant, districtTable.district, quantityTable.quantity\n" +
+                    "FROM districtTable, quantityTable\n" +
+                    "WHERE districtTable.restaurant = quantityTable.restaurant;";
 
     //6 task - Для каждой пиццерии вывести суммарное количество работников, количество позиций, средний размер пиццы
-    private static final String SQL =
-            "SELECT averageTable.restaurant,averageTable.averageMembers, quantityDistrict.quantity, averageTable.averageWeight\n" +
-                    "FROM averageTable, quantityDistrict\n" +
-                    "WHERE averageTable.restaurant = quantityDistrict.restaurant\n" +
-                    "GROUP BY averageTable.restaurant;";
+    private static final String SQL = "";
 
     //7 task - Вывести пиццерии в которых минимальное количество сотрудников в офисе больше, чем среднее количество по всем офисам.
     private static final String minimalMembersToSQL =
@@ -41,17 +45,58 @@ public class Service {
     public Statement statement;
     public Connection connection;
 
-    public void AddPizzaToTable(Pizza pizza) throws SQLException {
+    public void AddPizzaToTable(Pizza pizza, Weight weight) throws SQLException {
         connection = DriverManager.getConnection("jdbc:sqlite:/Users/Aydar/IdeaProjects/DBandFX/src/database/pizzaDataBase");
         statement = connection.createStatement();
 
         preparedStatement = connection.prepareStatement(
-                "INSERT INTO pizzaTypes (restaurant, name, weight) VALUES (?, ?, ?)");
+                "INSERT INTO pizzaTypes (restaurant, name) VALUES (?, ?)");
 
         preparedStatement.setString(1, pizza.getRestaurant());
         preparedStatement.setString(2, pizza.getName());
-        preparedStatement.setInt(3, pizza.getWeight());
         preparedStatement.execute();
+        preparedStatement = connection.prepareStatement(
+                "INSERT INTO pizzaWeight (pizzaName, weight) VALUES (?, ?)");
+
+        preparedStatement.setString(1, weight.getPizzaName());
+        preparedStatement.setInt(2, weight.getWeight());
+        preparedStatement.execute();
+    }
+
+    public boolean OrderPizzaToDistrict(Weight selectedPizza, String districtString) throws SQLException {
+        boolean flag = false;
+
+        //Берем Пиццу, затем вытаскимваем название и ищем совпадение с теми ресторанами, где она подается
+        ViewPizzaTypes vpt = new ViewPizzaTypes();
+        ArrayList<String> restaurantList = new ArrayList<>();
+        for (Pizza pizza : vpt.TablePizzaTypes()) {
+            if (selectedPizza.getPizzaName().equals(pizza.getName())) {
+//                System.out.println(pizza.getName() + " " + pizza.getRestaurant());
+                restaurantList.add(pizza.getRestaurant());  //Добавляем этот рест в список
+            }
+        }
+
+        //Подбираем и добавляем в список те районы, в которых есть рстораны из списка
+        ViewDistrict vd = new ViewDistrict();
+        ArrayList<String> districtList = new ArrayList<>();
+        for (String restaurant : restaurantList) {
+            for (District district : vd.TableDistrict()) {
+                if (restaurant.equals(district.getRestaurant())) {
+                    districtList.add(district.getDistrict());
+//                    System.out.println(district.getRestaurant()
+//                            + " " + district.getDistrict()
+//                            + " " + districtString);
+                }
+            }
+        }
+
+        for (String s : districtList) {
+            if (s.equals(districtString)) {
+                flag = true;
+            }
+        }
+
+        return flag;
     }
 
 }

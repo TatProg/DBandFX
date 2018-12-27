@@ -17,6 +17,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Pizza;
+import model.Weight;
 import service.Service;
 import tableView.ViewPizzaTypes;
 
@@ -40,14 +41,17 @@ public class pizzaTypesController implements Initializable {
     @FXML
     private TextField textField3;
 
+    //FixMe add new pizza method
     @FXML
     void addButton(ActionEvent event) throws SQLException {
         String s1 = textField1.getText();
         String s2 = textField2.getText();
         String s3 = textField3.getText();
-        Pizza pizza = new Pizza(s1, s2, Integer.parseInt(s3));
+        Pizza pizza = new Pizza(s1, s2);
+        Weight weight = new Weight(s2, Integer.parseInt(s3));
+
         Service service = new Service();
-        service.AddPizzaToTable(pizza);
+        service.AddPizzaToTable(pizza, weight);
 
         ViewPizzaTypes vpt = new ViewPizzaTypes();
         try {
@@ -59,9 +63,6 @@ public class pizzaTypesController implements Initializable {
         c2.setCellValueFactory(new PropertyValueFactory<>("name"));
         table.setItems(setTable);
         table.refresh();
-
-//        menuController mc = new menuController();
-//        mc.initialize();
     }
 
     ObservableList<Pizza> setTable = FXCollections.observableArrayList();

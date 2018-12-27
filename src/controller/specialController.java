@@ -50,7 +50,9 @@ public class specialController {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("SELECT");
         alert.setHeaderText("Для каждой пиццерии вывести районы доставки и количество позиций.");
-        alert.setContentText("SELECT restaurant, quantity, district FROM quantityDistrict;");
+        alert.setContentText("SELECT districtTable.restaurant, districtTable.district, quantityTable.quantity\n" +
+                "FROM districtTable, quantityTable\n" +
+                "WHERE districtTable.restaurant = quantityTable.restaurant;");
         alert.showAndWait();
     }
 

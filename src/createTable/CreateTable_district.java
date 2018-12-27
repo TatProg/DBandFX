@@ -8,22 +8,21 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CreateTable_quantityDistrict {
+public class CreateTable_district {
     public Statement statement;
     public Connection connection;
     private PreparedStatement preparedStatement;
     private static final String quantityDistrictsToSQL =
-            "INSERT INTO quantityDistrict (restaurant, quantity, district) VALUES (?, ?, ?)";
+            "INSERT INTO districtTable (restaurant, district) VALUES (?, ?)";
 
     //создание таблицы пицца - вес
-    public ObservableList<District> CreatePizzaTable() throws SQLException {
+    public ObservableList<District> CreateTableDistrict() throws SQLException {
         connection = DriverManager.getConnection("jdbc:sqlite:/Users/Aydar/IdeaProjects/DBandFX/src/database/pizzaDataBase");
         statement = connection.createStatement();
 
-        statement.execute("DROP TABLE IF EXISTS quantityDistrict;");
-        statement.execute("CREATE TABLE quantityDistrict (" +
+        statement.execute("DROP TABLE IF EXISTS districtTable;");
+        statement.execute("CREATE TABLE districtTable (" +
                 "restaurant TEXT NOT NULL," +
-                "quantity INT NOT NULL," +
                 "district TEXT NOT NULL" +
                 ");");
 
@@ -34,7 +33,6 @@ public class CreateTable_quantityDistrict {
         while (rs.next()) {
             List<String> list = new ArrayList<String>();
             String restaurant = rs.getString("restaurant");
-            String quantity = rs.getString("quantity");
             String districts = rs.getString("districts");
             districts = districts.replaceAll("\\{", "");
             districts = districts.replaceAll("\\}", "");
@@ -45,10 +43,9 @@ public class CreateTable_quantityDistrict {
             for (String s : list) {
                 preparedStatement = connection.prepareStatement(quantityDistrictsToSQL);
                 preparedStatement.setString(1, restaurant);
-                preparedStatement.setString(2, quantity);
-                preparedStatement.setString(3, s);
+                preparedStatement.setString(2, s);
                 preparedStatement.execute();
-                districtList.add(new District(restaurant, Integer.parseInt(quantity), s));
+                districtList.add(new District(restaurant, s));
             }
         }
         return districtList;

@@ -1,12 +1,12 @@
 package model;
 
-public class Pizza {
+public class Quantity {
     private String restaurant;
-    private String name;
+    private int quantity;
 
-    public Pizza(String restaurant, String name) {
+    public Quantity(String restaurant, int quantity) {
         this.restaurant = restaurant;
-        this.name = name;
+        this.quantity = quantity;
     }
 
     public String getRestaurant() {
@@ -17,11 +17,11 @@ public class Pizza {
         this.restaurant = restaurant;
     }
 
-    public String getName() {
-        return name;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }
