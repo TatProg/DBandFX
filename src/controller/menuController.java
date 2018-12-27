@@ -102,8 +102,6 @@ public class menuController implements Initializable {
 
     ObservableList<Weight> setTable = FXCollections.observableArrayList();
 
-
-    //FixMe - add new table
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         ViewPizzaWeight vpw = new ViewPizzaWeight();

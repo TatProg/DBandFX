@@ -1,5 +1,9 @@
 package controller;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -14,6 +18,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Office;
+import model.Pizza;
 import tableView.ViewOfficesAddress;
 
 public class officeAddressController implements Initializable {
@@ -32,13 +37,26 @@ public class officeAddressController implements Initializable {
 
 
     @FXML
-    void Upload(ActionEvent event) {
-        //officeAddressIN.txt
+    void Upload(ActionEvent event) throws IOException {
+        BufferedReader reader = new BufferedReader(
+                new InputStreamReader(
+                        new FileInputStream("officeAddressIN.txt")));
+        setTable.clear();
+        reader.lines().forEach(line -> {
+            String[] words = line.split(" , ");
+            setTable.add(new Office(
+                    words[0],
+                    words[1],
+                    Integer.parseInt(words[2])
+            ));
+        });
+        table.refresh();
+        reader.close();
     }
 
     @FXML
-    void Save(ActionEvent event) {
-        //officeAddressOUT.txt
+    void Save(ActionEvent event) throws IOException {
+        Office.WriteData(setTable, "officeAddressOUT.txt");
     }
 
     @FXML
